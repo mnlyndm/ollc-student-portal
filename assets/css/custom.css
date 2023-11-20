@@ -1,0 +1,22 @@
+.blue1{
+    color: #648EC7;
+}
+.bg-blue1{
+    background-color: #648EC7;
+}
+.border-blue1{
+    border-color: #648EC7;
+}
+.btn {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: #648EC7;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 25px;
+}
+.bg-admission-banner {
+    background-image: url('../img/admission-banner.png');
+}
