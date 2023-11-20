@@ -4,11 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pre-registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="topbarContainer"></div>
-    <div>
-        Pre-Registration
+    <div class="font-[roboto-serif]">
+        <div id="topbarContainer"></div>
+        <div class="w-full"><img src="../assets/img/admission-banner.png" class="w-full" alt=""></div>
+        <div class="w-full flex justify-center items-center ">
+            <div class="w-1/2 p-4 border border-blue-800 border-opacity-20 p-2 my-4 rounded-md">
+                <div class="font-bold text-2xl mb-4">
+                    Pre-Registration
+                </div>
+                <div class="text-base">
+                    We warmly welcome  senior high school graduates, college transferees, second coursers, and foreign applicants to our campus.
+                    Kindly fill-out the pre-registration form for a fast and efficient admissions procedure.
+                </div>
+                <div class="mt-4 w-full">
+                    <div class="flex justify-start items-center w-full gap-2">
+                        <div class="font-bold text-lg w-auto">
+                            You're applying for: 
+                        </div>
+                        <div class="w-3/4">
+                            <iframe src="../components/menus/courseMenu.html" frameborder="0" width="100%" height="35"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="inline-flex justify-start items-center gap-2 mt-2">
+                        <div><img src="../assets/svg/three-lines.svg" class="w-5 h-5" alt=""></div>
+                        <div class="font-bold text-xl">Personal Information</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center gap-2 w-full">
+                            <div class="w-full">
+                                <div>Surname</div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdSurname" name="surname" autocomplete="family-name"  style="text-transform: capitalize;" class="w-full px-1" ></div>
+                            </div>
+                            <div class="w-full">
+                                <div>First Name</div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdFirstname" name="firstname" autocomplete="given-name"  style="text-transform: capitalize;" class="w-full px-1"></div>
+                            </div>
+                            <div class="w-full">
+                                <div>Middle Name</div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdMiddlename" name="middlename"  style="text-transform: capitalize;" class="w-full px-1"></div>
+                            </div>
+                            <div class="w-full">
+                                <div>Suffix</div>
+                                <div><iframe src="../components/menus/suffixMenu.html" frameborder="0" width="100%" height="35"></iframe></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center gap-2 w-full">
+                            <div class="w-full">
+                                <div>Address</div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="address" name="address" autocomplete="address"  style="text-transform: capitalize;" class="w-full px-1" ></div>
+                            </div>
+                            <div class="w-full">
+                                <div>City </div>
+                                <div><iframe src="../components/menus/cityMenu.html" frameborder="0" width="100%" height="35"></iframe></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="inline-flex justify-start items-center gap-2 mt-2">
+                        <div><img src="../assets/svg/three-lines.svg" class="w-5 h-5" alt=""></div>
+                        <div class="font-bold text-xl">Contact Information</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center gap-2 w-full">
+                            <div class="w-full">
+                                <div>Email</div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full flex justify-between items-center relative gap-2">
+                                    <span class="w-full"><input type="text" name="email" id="email" class="w-full px-1" autocomplete="email" onblur="validateEmail()"></span>
+                                    <div class="relative">
+                                        <div id="emailInfoMessage" class="hidden absolute top-0 left-4 p-2 border rounded-md shadow-md mt-2 w-full">
+                                            example@gmail.com.
+                                        </div>
+                                    </div>
+                                    <p id="emailError" class="text-red-500 hidden absolute top-full left-0 bg-white p-2 border border-red-500 rounded-md w-full">
+                                        Invalid email format. Example: example@gmail.com
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <div>Cellphone</div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md inline-flex w-full"><span class="border-r border-blue-200 pr-2">+63</span><span class="w-full"><input type="text" name="stdMobile" id="stdMobile" class="w-full px-1"></span></div>
+                            </div>
+                            <div class="w-full">
+                                <div>Tel. No.</div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stnTelNo" name="telNo"  style="text-transform: capitalize;" class="w-full px-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex justify-center items-center ">
+                    <button type="submit" value="Submit" class="bg-blue-400 mt-2 py-2 px-8 shadow inline-flex gap-2 text-white rounded-full hover:bg-blue-600 hover:font-semibold" id="submit">Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <object data="./footer.html" type="text/html" width="100%" height="56px"></object>
