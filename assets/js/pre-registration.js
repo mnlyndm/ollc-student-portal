@@ -1,7 +1,14 @@
 function generateStudentIdAndPwd() {
 
+    if (document.getElementById('submit').disabled) {
+        alert("You have already submitted the form.");
+        return;
+    }
+
     var stdSurname = document.getElementById('stdSurname').value;
     var stdFirstname = document.getElementById('stdFirstname').value;
+
+    document.getElementById('submit').disabled = true;
 
     var currentDate = new Date();
     var studentId =
