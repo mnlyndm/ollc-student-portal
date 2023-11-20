@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pre-registration</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="../assets/js/pre-registration.js"></script>
 </head>
 <body>
     <div id="topbarContainer"></div>
@@ -99,10 +100,12 @@
                     </div>
                 </div>
                 <div class="w-full flex justify-center items-center ">
-                    <button type="submit" value="Submit" class="bg-blue-400 mt-2 py-2 px-8 shadow inline-flex gap-2 text-white rounded-full hover:bg-blue-600 hover:font-semibold" id="submit">Submit</button>
+                    <button type="submit" value="Submit" class="bg-blue-400 mt-2 py-2 px-8 shadow inline-flex gap-2 text-white rounded-full hover:bg-blue-600 hover:font-semibold" id="submit" onclick="generateStudentIdAndPwd()">Submit</button>
                 </div>
             </div>
         </div>
+        <div id="generatedStdID"></div>
+        <div id="generatedPwd"></div>
     </div>
     <div>
         <object data="./footer.html" type="text/html" width="100%" height="56px"></object>
