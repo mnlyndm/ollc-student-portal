@@ -13,7 +13,7 @@
         <div id="topbarContainer"></div>
         <div class="w-full"><img src="../assets/img/admission-banner.png" class="w-full" alt=""></div>
         <div class="w-full flex justify-center items-center ">
-            <div class="w-1/2 p-4 border border-blue-800 border-opacity-20 p-2 my-4 rounded-md">
+            <div class="w-1/2 p-4 border border-blue-800 border-opacity-20 p-2 my-4 rounded-md drop-shadow-md">
                 <div class="font-bold text-2xl mb-4">
                     Pre-Registration
                 </div>
@@ -27,7 +27,7 @@
                             You're applying for: 
                         </div>
                         <div class="w-3/4">
-                            <iframe src="../components/menus/courseMenu.html" frameborder="0" width="100%" height="35"></iframe>
+                            <iframe src="../components/menus/courseMenu.html" frameborder="0" width="100%" height="35" id="courseIframe"></iframe>
                         </div>
                     </div>
                 </div>
@@ -40,15 +40,15 @@
                         <div class="flex justify-between items-center gap-2 w-full">
                             <div class="w-full">
                                 <div>Surname</div>
-                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdSurname" name="surname" autocomplete="family-name"  style="text-transform: capitalize;" class="w-full px-1" ></div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdSurname" name="surname" autocomplete="family-name" required style="text-transform: capitalize;" class="w-full px-1"></div>
                             </div>
                             <div class="w-full">
                                 <div>First Name</div>
-                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdFirstname" name="firstname" autocomplete="given-name"  style="text-transform: capitalize;" class="w-full px-1"></div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdFirstname" name="firstname" autocomplete="given-name" required style="text-transform: capitalize;" class="w-full px-1"></div>
                             </div>
                             <div class="w-full">
                                 <div>Middle Name</div>
-                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdMiddlename" name="middlename"  style="text-transform: capitalize;" class="w-full px-1"></div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stdMiddlename" name="middlename" required style="text-transform: capitalize;" class="w-full px-1"></div>
                             </div>
                             <div class="w-full">
                                 <div>Suffix</div>
@@ -58,7 +58,7 @@
                         <div class="flex justify-between items-center gap-2 w-full">
                             <div class="w-full">
                                 <div>Address</div>
-                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="address" name="address" autocomplete="address"  style="text-transform: capitalize;" class="w-full px-1" ></div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="address" name="address" autocomplete="address" style="text-transform: capitalize;" class="w-full px-1" ></div>
                             </div>
                             <div class="w-full">
                                 <div>City </div>
@@ -77,7 +77,7 @@
                             <div class="w-full">
                                 <div>Email</div>
                                 <div class="text-sm p-1 border border-blue-200 rounded-md w-full flex justify-between items-center relative gap-2">
-                                    <span class="w-full"><input type="text" name="email" id="email" class="w-full px-1" autocomplete="email" onblur="validateEmail()"></span>
+                                    <span class="w-full"><input type="text" name="email" id="email" class="w-full" autocomplete="email" onblur="validateEmail()"></span>
                                     <div class="relative">
                                         <div id="emailInfoMessage" class="hidden absolute top-0 left-4 p-2 border rounded-md shadow-md mt-2 w-full">
                                             example@gmail.com.
@@ -90,11 +90,11 @@
                             </div>
                             <div class="w-full">
                                 <div>Cellphone</div>
-                                <div class="text-sm p-1 border border-blue-200 rounded-md inline-flex w-full"><span class="border-r border-blue-200 pr-2">+63</span><span class="w-full"><input type="text" name="stdMobile" id="stdMobile" class="w-full px-1"></span></div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md inline-flex w-full"><span class="border-r border-blue-200 pr-2">+63</span><span class="w-full"><input type="text" name="stdMobile" id="stdMobile" class="w-full px-1" required></span></div>
                             </div>
                             <div class="w-full">
                                 <div>Tel. No.</div>
-                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stnTelNo" name="telNo"  style="text-transform: capitalize;" class="w-full px-1"></div>
+                                <div class="text-sm p-1 border border-blue-200 rounded-md w-full"><input type="text" id="stnTelNo" name="telNo" required style="text-transform: capitalize;" class="w-full px-1" ></div>
                             </div>
                         </div>
                     </div>
@@ -104,8 +104,69 @@
                 </div>
             </div>
         </div>
-        <div id="generatedStdID"></div>
-        <div id="generatedPwd"></div>
+        <div id="popup" class="hidden h-screen w-screen fixed top-0 left-0">
+            <div class="w-full h-full backdrop-filter backdrop-blur-sm flex justify-center items-center">
+                <div class="p-5 bg-white border border-blue-200 rounded-md">
+                    <div class="grid gap-2 mb-2">
+                        <div>
+                            <b>Welcome to Our Lady of Lourdes College - Your Next Steps!</b>
+                        </div>
+                        <div>
+                            Congratulations on completing the pre-registration process for Our Lady of Lourdes College! 
+                            <br>
+                            We are thrilled to welcome you to our academic community.
+                        </div>
+                        <div>
+                            To access your student account and complete your registration, follow these simple steps:
+                        </div>
+                        <div class=" grid gap-1">
+                            <div class="font-semibold">1. Login Credentials:</div>
+                            <div class="flex">
+                                <div class="font-semibold">Student ID Number: &nbsp; </div>
+                                <div id="generatedStdID"></div>
+                            </div>
+                            <div class="flex">
+                                <div class="font-semibold">Password: &nbsp; </div>
+                                <div id="generatedPwd"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-semibold">2. Login Instructions:</div>
+                            <ul class="list-disc px-4">
+                                <li>Visit our school website.</li>
+                                <li>Click the "Student Portal" button in top navigation bar.</li>
+                                <li>Enter your Student ID Number and Password.</li>
+                                <li>Click "Login" to access your student account.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="font-semibold">3. Complete Registration:</div>
+                            <ul class="list-disc px-4">
+                                <li>Once logged in, you'll find a form.</li>
+                                <li>Fill in any missing information required for your official enrollment.</li>
+                                <li>Review and confirm accuracy of the details you provided during pre-registration.</li>
+                                <li>Upload any necessary documents as specified in the the registration process.</li>
+                                <li>Submit the form.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="font-semibold">4. Enrollment:</div>
+                            <ul class="list-disc px-4">
+                                <li>After completing the registration, you'll be directed to the enrollment section.</li>
+                                <li>Follow the provided instructions to select your courses and finalize your enrollment <br> for the academic for the upcoming academic term</li>
+                            </ul>
+                        </div>
+                        <div>
+                            We're excited to have you as part of the Our Lady of Lourdes College family! Your journey towards academic success begins here. <br>
+                            If you have any additional queries or require further assistance, do not hesitate to reach out.
+                        </div>
+                    </div>
+                    <div class="w-full flex justify-center items-center">
+                        <button class="bg-blue-400 mt-2 py-2 px-8 shadow inline-flex gap-2 text-white rounded-full hover:bg-blue-600 hover:font-semibold" onclick="btnPopup()">Proceed to Login</button>	
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <object data="./footer.html" type="text/html" width="100%" height="56px"></object>
