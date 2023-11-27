@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "ollcinformationsystemadmin";
+$database = "student_portal";
 
 $conn = new mysqli ($servername, $username, $password, $database);
 
