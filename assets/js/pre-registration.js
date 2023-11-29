@@ -11,3 +11,7 @@ function validateEmail() {
         emailError.classList.add("hidden");
     }
 }
+
+function goToLoginPage() {
+    window.location.href = '../student/login.html';
+}
