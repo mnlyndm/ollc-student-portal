@@ -1,6 +1,5 @@
-const suffixes = ["-- select one --","JR","SR","I","II","III","IV",];
+const suffixes = ["","JR","SR","I","II","III","IV",];
 const courses = [
-    "-- select one --",
     "Bachelor of Science in Information Technology",
     "Bachelor of Science in Hospitality Management",
     "Bachelor of Science in Criminology",
@@ -9,7 +8,6 @@ const courses = [
     "Bachelor of Education Major in Math"
 ];
 const cities = [
-    "-- select one --",
     "Manila",
     "Quezon City",
     "Davao",
