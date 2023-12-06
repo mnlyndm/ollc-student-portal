@@ -42,7 +42,7 @@
                         if ($conn->query($sqlSchoolAccount) === TRUE) {
                             $schoolAccountId = $conn->insert_id;
 
-                            $sqlStudentInformation = "INSERT INTO student_information (students_id, contact_information_id, course_id, school_account_id) VALUES ('$studentId','$contactInformationId', '$courseId', '$schoolAccountId')";
+                            $sqlStudentInformation = "INSERT INTO student_information (students_id, contact_information_id, course_id, school_account_id, status) VALUES ('$studentId','$contactInformationId', '$courseId', '$schoolAccountId','pre-registered')";
                             if ($conn->query($sqlStudentInformation) === TRUE) {
                                 $result = [
                                     "studentNumber" => $studentNumber,
