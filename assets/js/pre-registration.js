@@ -47,5 +47,5 @@ function submitForm() {
 }
 
 function goToLoginPage() {
-    window.location.href = "../student/login.html";
+    window.location.href = "../login/student/login.php";
 }
