@@ -22,9 +22,9 @@
 
         $password = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 8);
 
-        $sqlStudent = "INSERT INTO students (surname, first_name, middle_name, suffix) VALUES ('$surname','$first_name','$middle_name','$suffix')";
-        if ($conn->query($sqlStudent) === TRUE) {
-            $studentId = $conn->insert_id;
+        $sqlStudentNumber = "INSERT INTO student_number (student_number) VALUES ('$studentNumber')";
+            if ($conn->query($sqlStudentNumber) === TRUE) {
+                $studentNumberId = $conn->insert_id;
 
             $sqlCourse = "INSERT INTO course (name) VALUES ('$course')";
             if ($conn->query($sqlCourse) === TRUE) {
@@ -34,9 +34,9 @@
                 if ($conn->query($sqlContactInformation) === TRUE) {
                     $contactInformationId = $conn->insert_id;
 
-                    $sqlStudentNumber = "INSERT INTO student_number (student_number) VALUES ('$studentNumber')";
-                    if ($conn->query($sqlStudentNumber) === TRUE) {
-                        $studentNumberId = $conn->insert_id;
+                    $sqlStudent = "INSERT INTO students (student_number_id, surname, first_name, middle_name, suffix) VALUES ('$studentNumberId','$surname','$first_name','$middle_name','$suffix')";
+                    if ($conn->query($sqlStudent) === TRUE) {
+                        $studentId = $conn->insert_id;
 
                         $sqlSchoolAccount = "INSERT INTO school_account (student_number_id, password) VALUES ('$studentNumberId', '$password')";
                         if ($conn->query($sqlSchoolAccount) === TRUE) {
@@ -57,7 +57,7 @@
                             echo json_encode(["status" => "error", "message" => "Error inserting into school account: " . $conn->error]);
                         }
                     } else {
-                        echo json_encode(["status" => "error", "message" => "Error inserting into student number: " . $conn->error]);
+                        echo json_encode(["status" => "error", "message" => "Error inserting into students: " . $conn->error]);
                     }
                 } else {
                     echo json_encode(["status" => "error", "message" => "Error inserting into contact information: " . $conn->error]);
@@ -66,7 +66,7 @@
                 echo json_encode(["status" => "error", "message" => "Error inserting into course: " . $conn->error]);
             }
         } else {
-            echo json_encode(["status" => "error", "message" => "Error inserting into students: " . $conn->error]);
+            echo json_encode(["status" => "error", "message" => "Error inserting into student number: " . $conn->error]);
         }
     } else {
         echo json_encode(["status" => "error", "message" => "Invalid request"]);
