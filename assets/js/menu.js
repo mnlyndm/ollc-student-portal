@@ -62,9 +62,31 @@ const cities = [
     "Bagong Pag-Asa",
     "Pinyahan"
 ];
+const genders = [
+    "Female",
+    "Male"
+];
+const relationship = [
+    "Mother",
+    "Father",
+    "Grandmother",
+    "Grandfather",
+    "Aunt",
+    "Child",
+    "Sister",
+    "Brother",
+    "Wife",
+    "Husband",
+    "Uncle"
+];
 
 function populateSelect(selectId, options) {
     const selectElement = document.getElementById(selectId);
+
+    if (!selectElement) {
+        console.error(`Element with ID '${selectId}' not found.`);
+        return;
+    }
 
     options.forEach(option => {
         const optionElement = document.createElement("option");
@@ -72,8 +94,15 @@ function populateSelect(selectId, options) {
         optionElement.text = option;
         selectElement.add(optionElement);
     });
+
+    console.log(`Select '${selectId}' populated successfully.`);
 }
 
-populateSelect("suffixMenu", suffixes);
-populateSelect("courseMenu", courses);
-populateSelect("cityMenu", cities);
+document.addEventListener("DOMContentLoaded", function () {
+
+    populateSelect("suffixMenu", suffixes);
+    populateSelect("courseMenu", courses);
+    populateSelect("cityMenu", cities);
+    populateSelect("genderMenu", genders);
+    populateSelect("relationshipMenu", relationship);
+});

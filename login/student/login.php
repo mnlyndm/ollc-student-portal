@@ -28,10 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             $_SESSION['student_number'] = $row['student_number'];
             $_SESSION['first_name'] = $row['first_name'];
             $_SESSION['surname'] = $row['surname'];
+            $_SESSION['status'] = $row['status'];
 
             switch ($row['status']) {
                 case 'pre-registered':
-                    header("Location: ../../student/admission.html");
+                    header("Location: ../../student/admission.php");
                     break;
 
                 case 'registered':
