@@ -26,9 +26,9 @@
             if ($conn->query($sqlStudentNumber) === TRUE) {
                 $studentNumberId = $conn->insert_id;
 
-            $sqlCourse = "INSERT INTO course (name) VALUES ('$course')";
-            if ($conn->query($sqlCourse) === TRUE) {
-                $courseId = $conn->insert_id;
+                $sqlEnrollmentDetails = "INSERT INTO enrollment_details (course) VALUES ('$course')";
+                if ($conn->query($sqlEnrollmentDetails) === TRUE) {
+                    $enrollmentDetailsId = $conn->insert_id;
 
                 $sqlContactInformation = "INSERT INTO contact_information (city, email, mobile_number) VALUES ('$city','$email','$mobile')";
                 if ($conn->query($sqlContactInformation) === TRUE) {
@@ -42,7 +42,7 @@
                         if ($conn->query($sqlSchoolAccount) === TRUE) {
                             $schoolAccountId = $conn->insert_id;
 
-                            $sqlStudentInformation = "INSERT INTO student_information (students_id, contact_information_id, course_id, school_account_id, status) VALUES ('$studentId','$contactInformationId', '$courseId', '$schoolAccountId','pre-registered')";
+                            $sqlStudentInformation = "INSERT INTO student_information (students_id, contact_information_id, enrollment_details_id, school_account_id, status) VALUES ('$studentId','$contactInformationId', '$enrollmentDetailsId', '$schoolAccountId','pre-registered')";
                             if ($conn->query($sqlStudentInformation) === TRUE) {
                                 $result = [
                                     "studentNumber" => $studentNumber,

@@ -1,47 +1,47 @@
-function validateEmail() {
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('emailError');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    emailError.classList.toggle('hidden', emailRegex.test(emailInput.value));
-}
-
 function submitForm() {
     validateEmail();
 
     const formData = new FormData(document.querySelector('form'));
-
     formData.append('submit', 'Submit');
 
     fetch('../php/pre-registration.php', {
         method: 'POST',
-        body: new URLSearchParams(formData)
+        body: new URLSearchParams(formData),
     })
-    .then(response => response.json())
-    .then(data => {
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Server response:', data);
 
-        if (data.status === 'recorded') {
-            document.getElementById("studentNumber").textContent = data.studentNumber;
-            document.getElementById("password").textContent = data.password;
+            if (data && data.status === 'recorded') {
+                document.getElementById('studentNumber').textContent = data.studentNumber;
+                document.getElementById('password').textContent = data.password;
 
-            document.getElementById("popup").classList.remove("hidden");
-            
-            const blobData = new Blob([`Student Number: ${data.studentNumber}\nPassword: ${data.password}`], { type: 'text/plain' });
+                document.getElementById('popup').classList.remove('hidden');
 
-            const downloadLink = document.createElement('a');
-            downloadLink.href = window.URL.createObjectURL(blobData);
-            downloadLink.download = 'student_credentials.txt';
+                const blobData = new Blob(
+                    [`Student Number: ${data.studentNumber}\nPassword: ${data.password}`],
+                    { type: 'text/plain' }
+                );
 
-            downloadLink.click();
+                const downloadLink = document.createElement('a');
+                downloadLink.href = window.URL.createObjectURL(blobData);
+                downloadLink.download = 'student_credentials.txt';
 
-            window.URL.revokeObjectURL(downloadLink.href);
-        } else {
-            console.error('Error recording data:', data);
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching credentials:', error);
-    });
+                downloadLink.click();
+
+                window.URL.revokeObjectURL(downloadLink.href);
+            } else {
+                console.error('Unexpected server response:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching or processing data:', error);
+        });
 
     return false;
 }

@@ -62,23 +62,6 @@ const cities = [
     "Bagong Pag-Asa",
     "Pinyahan"
 ];
-const genders = [
-    "Female",
-    "Male"
-];
-const relationship = [
-    "Mother",
-    "Father",
-    "Grandmother",
-    "Grandfather",
-    "Aunt",
-    "Child",
-    "Sister",
-    "Brother",
-    "Wife",
-    "Husband",
-    "Uncle"
-];
 
 function populateSelect(selectId, options) {
     const selectElement = document.getElementById(selectId);
@@ -103,6 +86,4 @@ document.addEventListener("DOMContentLoaded", function () {
     populateSelect("suffixMenu", suffixes);
     populateSelect("courseMenu", courses);
     populateSelect("cityMenu", cities);
-    populateSelect("genderMenu", genders);
-    populateSelect("relationshipMenu", relationship);
 });
